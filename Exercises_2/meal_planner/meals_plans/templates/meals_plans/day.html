@@ -5,6 +5,9 @@
   <p>Day: {{ day }}</p>
 
   <p>Meals:</p>
+  <p>
+    <a href="{% url 'meals_plans:new_meal' day.id %}">Add new meal</a>
+  </p>
   <ul>
       {% for meal in meals %}
         <li>
