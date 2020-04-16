@@ -1,0 +1,19 @@
+{% extends 'meals_plans/base.html' %}
+
+{% block content %}
+
+  <p>Day: {{ day }}</p>
+
+  <p>Meals:</p>
+  <ul>
+      {% for meal in meals %}
+        <li>
+        <p>{{ meal.date_added|date:'M d, Y H:i' }}</p>
+        <p>{{ meal.meal|linebreaks }}</p>
+        </li>
+      {% empty %}
+        <li>There are no meals for this day yet.</li>
+      {% endfor %}
+    </ul>
+
+{% endblock content %}
