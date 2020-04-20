@@ -38,6 +38,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # My apps.
     'pizzas',
+    'users',
 
     # Default django apps.
     'django.contrib.admin',
@@ -127,3 +128,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# My settings
+LOGIN_URL = 'users:login'

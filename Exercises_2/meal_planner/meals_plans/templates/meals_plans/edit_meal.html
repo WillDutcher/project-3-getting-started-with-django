@@ -1,0 +1,15 @@
+{% extends "meals_plans/base.html" %}
+
+{% block content %}
+
+  <p><a href="{% url 'meals_plans:day' day.id %}">{{ day }}</a></p>
+
+  <p>Edit meal:</p>
+
+  <form action="{% url 'meals_plans:edit_meal' meal.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Save changes</button>
+  </form>
+
+{% endblock content %}

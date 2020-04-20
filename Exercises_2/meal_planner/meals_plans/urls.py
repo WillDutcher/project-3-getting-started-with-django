@@ -14,4 +14,6 @@ urlpatterns = [
     path('days/<int:day_id>/', views.day, name='day'),
     # Page for adding a new meal.
     path('new_meal/<int:day_id>/', views.new_meal, name='new_meal'),
+    # Page for editing a meal.
+    path('edit_meal/<int:meal_id>/', views.edit_meal, name='edit_meal'),
 ]
