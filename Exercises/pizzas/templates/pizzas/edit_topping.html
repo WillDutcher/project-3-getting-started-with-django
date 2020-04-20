@@ -1,15 +1,23 @@
 {% extends "pizzas/base.html" %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+  <h1>Editing Entry for:
+      <a href="{% url 'pizzas:pizza' pizza.id %}">{{ pizza }}</a></h1>
+{% endblock page_header %}
 
 {% block content %}
 
-  <p><a href="{% url 'pizzas:pizza' pizza.id %}">{{ pizza }}</a></p>
-
-  <p>Edit topping:</p>
-
-  <form action="{% url 'pizzas:edit_topping' topping.id %}" method='post'>
+  <form action="{% url 'pizzas:edit_topping' topping.id %}" method='post'
+      class='form'>
     {% csrf_token %}
-    {{ form.as_p }}
-    <button name="submit">Save changes</button>
+    {% bootstrap_form form %}
+    {% buttons %}
+      <button name="submit">Save changes</button>
+    {% endbuttons %}
+
+    <input type="hidden" name="next"
+        value="{% url 'pizzas:pizza' pizza.id %}" />
   </form>
 
 {% endblock content %}

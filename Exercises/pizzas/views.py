@@ -35,7 +35,9 @@ def new_pizza(request):
         # POST data submitted; process data.
         form = PizzaForm(data=request.POST)
         if form.is_valid():
-            form.save()
+            new_pizza = form.save(commit=False)
+            new_pizza.owner = request.user
+            new_pizza.save()
             return redirect('pizzas:pizzas')
 
     # Display a blank or invalid form.

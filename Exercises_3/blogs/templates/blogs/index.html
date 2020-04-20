@@ -1,5 +1,18 @@
 {% extends "blogs/base.html" %}
 
+{% block page_header %}
+  <div class="jumbotron">
+    <h1 class="display-3">Write a blog.</h1>
+
+    <p class="lead">This blog is your own personal diary that you may enter
+        anything you so desire. Track your dreams, your activities for the day,
+        something that frustrates you; track anything you want!</p>
+
+    <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+        role="button">Register &raquo;</a>
+  </div>
+{% endblock page_header %}
+
 {% block content %}
   <p>My Blog helps me write down things I may want to record for a specific time or event.</p>
 {% endblock content %}

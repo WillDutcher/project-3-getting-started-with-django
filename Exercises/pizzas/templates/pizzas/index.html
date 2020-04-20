@@ -1,5 +1,18 @@
 {% extends "pizzas/base.html" %}
 
+{% block page_header %}
+  <div class="jumbotron">
+    <h1 class="display-3">Create your pizza.</h1>
+
+    <p class="lead">Design your own pizza. Be as creative as you like If there
+        is a topping you love but isn't shown, create it yourself and add it
+        to your pizza creation!</p>
+
+    <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+        role="button">Register &raquo;</a>
+  </div>
+{% endblock page_header %}
+
 {% block content %}
 <p>Pizzaria has many different pizzas with many different toppings.</p>
 {% endblock content %}

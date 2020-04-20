@@ -1,14 +1,22 @@
 {% extends "meals_plans/base.html" %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+  <h1>Adding New Meal for:
+      <a href="{% url 'meals_plans:day' day.id %}">{{ day }}</a></h1>
+{% endblock page_header %}
 
 {% block content %}
 
-  <p><a href="{% url 'meals_plans:day' day.id %}">{{ day }}</a></p>
-
-  <p>Add a new meal:</p>
-  <form action="{% url 'meals_plans:new_meal' day.id %}" method='post'>
+  <form action="{% url 'meals_plans:new_meal' day.id %}" method='post'
+      class='form'>
     {% csrf_token %}
-    {{ form.as_p }}
-    <button name='submit'>Add meal</button>
+    {% bootstrap_form form %}
+    {% buttons %}
+      <button name='submit'>Add meal</button>
+    {% endbuttons %}
+
+    <input type="hidden" name="next" value="{% url 'meals_plans:days' %}" />
   </form>
 
 {% endblock content %}

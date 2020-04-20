@@ -1,25 +1,27 @@
 {% extends 'meals_plans/base.html' %}
 
+{% block page_header %}
+  <h3>{{ day }}</h3>
+{% endblock page_header %}
+
 {% block content %}
 
-  <p>Day: {{ day }}</p>
-
-  <p>Meals:</p>
   <p>
     <a href="{% url 'meals_plans:new_meal' day.id %}">Add new meal</a>
   </p>
-  <ul>
-      {% for meal in meals %}
-        <li>
-        <p>{{ meal.date_added|date:'M d, Y H:i' }}</p>
-        <p>{{ meal.meal|linebreaks }}</p>
-        <p>
-          <a href="{% url 'meals_plans:edit_meal' meal.id %}">Edit meal</a>
-        </p>
-        </li>
-      {% empty %}
-        <li>There are no meals for this day yet.</li>
-      {% endfor %}
-    </ul>
+
+  {% for meal in meals %}
+    <div class="card mb-3">
+      <h4 class="card-header">
+        {{ meal.date_added|date:'M d, Y H:i' }}
+        <small><a href="{% url 'meals_plans:edit_meal' meal.id %}">
+          edit meal</a></small>
+      </h4>
+      <div class="card-body">
+        {{ meal.meal|linebreaks }}
+      </div>
+    </div>
+  {% empty %}
+  {% endfor %}
 
 {% endblock content %}

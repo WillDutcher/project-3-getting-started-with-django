@@ -1,10 +1,13 @@
 {% extends "pizzas/base.html" %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+  <h1>Adding New Topping to:
+      <a href="{% url 'pizzas:pizza' pizza.id %}">{{ pizza }}</a></h1>
+{% endblock page_header %}
 
 {% block content %}
 
-  <p><a href="{% url 'pizzas:pizza' pizza.id %}">{{ pizza }}</a></p>
-
-  <p>Add a new topping:</p>
   <form action="{% url 'pizzas:new_topping' pizza.id %}" method='post'>
     {% csrf_token %}
     {{ form.as_p }}
